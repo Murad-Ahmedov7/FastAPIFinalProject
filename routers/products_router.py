@@ -16,6 +16,7 @@ def add(payload:ProductIn,db:Session=Depends(get_db)):
     db.add(product)
     db.commit()
     db.refresh(product)
+
     return product
 
 
