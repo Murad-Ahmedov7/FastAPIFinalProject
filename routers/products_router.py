@@ -1,4 +1,4 @@
-
+from typing import List
 
 from fastapi import Depends, HTTPException, APIRouter
 from slugify import slugify
@@ -16,8 +16,11 @@ def add(payload:ProductIn,db:Session=Depends(get_db)):
     db.add(product)
     db.commit()
     db.refresh(product)
-
     return product
+
+@router.get('/',response_model=List[ProductOut],dependencies=[Depends(require_roles(Role.admin))],status_code=200)
+def getAllProducts(db:Session=Depends(get_db)):
+    return  db.query(Product).all()
 
 
 #slug tekrarlanmasin qarsini al
