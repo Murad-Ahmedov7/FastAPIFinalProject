@@ -24,3 +24,6 @@ def getAllProducts(db:Session=Depends(get_db)):
 
 
 #slug tekrarlanmasin qarsini al
+
+
+#token vaxt bitmesi

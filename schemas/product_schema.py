@@ -9,6 +9,7 @@ class ProductIn(BaseModel):
 
 
 class ProductOut(BaseModel):
+    id:int
     name: str
     unique_stock_code:str
     description:str
