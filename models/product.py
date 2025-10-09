@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy.orm import relationship
 
 from database import Base
 
@@ -17,3 +18,6 @@ class Product(Base):
     price = Column(Integer, nullable=False, default=0)
     quantity = Column(Integer, nullable=False, default=0)
     is_active = Column(Boolean, nullable=False, default=True)
+    # Relationships
+    basket_items = relationship("BasketItem", back_populates="product")
+    order_items = relationship("OrderItem", back_populates="product")

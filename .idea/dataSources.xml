@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="fastapi_final_new" uuid="5eda30e8-bcbe-43f3-b85e-a2891a873fed">
+    <data-source source="LOCAL" name="fastapi_final_new" uuid="eab1a349-5c39-4a87-9173-3d5dcee38b2c">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>

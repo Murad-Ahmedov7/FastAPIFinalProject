@@ -21,8 +21,9 @@ class UserOut(BaseModel):
     email:EmailStr
     role:Role
     is_active:bool
+
     class Config:
-        from_attributes=True
+        from_attributes = True
 
 class TokenOut(BaseModel):
     access_token: str

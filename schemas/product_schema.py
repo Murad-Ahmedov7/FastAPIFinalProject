@@ -17,13 +17,7 @@ class ProductOut(BaseModel):
     quantity:int
     is_active:bool
     slug:str
-    class Config:
-        from_attributes=True
 
-    # name = Column(String(200), nullable=False)
-    # slug = Column(String(200), nullable=False, unique=True)
-    # unique_stock_code = Column(String(100), nullable=False, unique=True)  # SKU
-    # description = Column(String, nullable=True)
-    # price = Column(Integer, nullable=False, default=0)
-    # quantity = Column(Integer, nullable=False, default=0)
-    # is_active = Column(Boolean, nullable=False, default=True)
+    class Config:
+        from_attributes = True
+
