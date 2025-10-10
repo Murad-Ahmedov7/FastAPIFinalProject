@@ -4,7 +4,7 @@ from starlette.middleware.cors import CORSMiddleware
 
 from database import Base, engine
 from routers import users_router, products_router_user,products_router_admin,basket_router
-
+from models import *
 Base.metadata.create_all(bind=engine)
 app = FastAPI(title="FinalProj")
 
