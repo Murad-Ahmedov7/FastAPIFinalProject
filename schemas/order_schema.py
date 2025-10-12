@@ -36,5 +36,8 @@ class OrderResponse(OrderBase):
     created_at: datetime
     items: List[OrderItemResponse] = []
 
+class StatusUpdate(BaseModel):
+    status: str
+
     class Config:
         from_attributes=True

@@ -72,53 +72,53 @@ def add_to_basket(
 # --------------------------
 # Update Basket Item quantity
 # --------------------------
-# @router.put("/items/{item_id}", response_model=BasketItemResponse, dependencies=[Depends(require_roles(Role.user))])
-# def update_basket_item(
-#     item_id: int,
-#     payload: BasketItemCreate,
-#     db: Session = Depends(get_db),
-#     current_user: User = Depends(get_current_user)
-# ):
-#     basket = db.query(Basket).filter(Basket.user_id == current_user.id).first()
-#     if not basket:
-#         raise HTTPException(status_code=404, detail="Basket not found")
-#
-#     basket_item = db.query(BasketItem).filter(
-#         BasketItem.id == item_id,
-#         BasketItem.basket_id == basket.id
-#     ).first()
-#     if not basket_item:
-#         raise HTTPException(status_code=404, detail="Basket item not found")
-#
-#     product = db.query(Product).filter(Product.id == basket_item.product_id).first()
-#     if payload.quantity > product.quantity:
-#         raise HTTPException(status_code=400, detail=f"Only {product.quantity} items in stock")
-#
-#     basket_item.quantity = payload.quantity
-#     db.commit()
-#     db.refresh(basket_item)
-#     return basket_item
-#
-# # --------------------------
-# # Delete Basket Item
-# # --------------------------
-# @router.delete("/items/{item_id}", status_code=status.HTTP_204_NO_CONTENT, dependencies=[Depends(require_roles(Role.user))])
-# def delete_basket_item(
-#     item_id: int,
-#     db: Session = Depends(get_db),
-#     current_user: User = Depends(get_current_user)
-# ):
-#     basket = db.query(Basket).filter(Basket.user_id == current_user.id).first()
-#     if not basket:
-#         raise HTTPException(status_code=404, detail="Basket not found")
-#
-#     basket_item = db.query(BasketItem).filter(
-#         BasketItem.id == item_id,
-#         BasketItem.basket_id == basket.id
-#     ).first()
-#     if not basket_item:
-#         raise HTTPException(status_code=404, detail="Basket item not found")
-#
-#     db.delete(basket_item)
-#     db.commit()
-#     return
+@router.put("/items/{item_id}", response_model=BasketItemResponse, dependencies=[Depends(require_roles(Role.user))])
+def update_basket_item(
+    item_id: int,
+    payload: BasketItemCreate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    basket = db.query(Basket).filter(Basket.user_id == current_user.id).first()
+    if not basket:
+        raise HTTPException(status_code=404, detail="Basket not found")
+
+    basket_item = db.query(BasketItem).filter(
+        BasketItem.id == item_id,
+        BasketItem.basket_id == basket.id
+    ).first()
+    if not basket_item:
+        raise HTTPException(status_code=404, detail="Basket item not found")
+
+    product = db.query(Product).filter(Product.id == basket_item.product_id).first()
+    if payload.quantity > product.quantity:
+        raise HTTPException(status_code=400, detail=f"Only {product.quantity} items in stock")
+
+    basket_item.quantity = payload.quantity
+    db.commit()
+    db.refresh(basket_item)
+    return basket_item
+
+# --------------------------
+# Delete Basket Item
+# --------------------------
+@router.delete("/items/{item_id}", status_code=status.HTTP_204_NO_CONTENT, dependencies=[Depends(require_roles(Role.user))])
+def delete_basket_item(
+    item_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    basket = db.query(Basket).filter(Basket.user_id == current_user.id).first()
+    if not basket:
+        raise HTTPException(status_code=404, detail="Basket not found")
+
+    basket_item = db.query(BasketItem).filter(
+        BasketItem.id == item_id,
+        BasketItem.basket_id == basket.id
+    ).first()
+    if not basket_item:
+        raise HTTPException(status_code=404, detail="Basket item not found")
+
+    db.delete(basket_item)
+    db.commit()
+    return

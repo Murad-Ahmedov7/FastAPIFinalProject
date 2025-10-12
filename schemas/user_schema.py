@@ -19,6 +19,7 @@ class UserLogin(BaseModel):
 class UserOut(BaseModel):
     id:int
     email:EmailStr
+    username:str
     role:Role
     is_active:bool
 
